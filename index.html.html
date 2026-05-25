@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoRent - Аренда авто в Беларуси</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .flag-belt {
+            height: 5px;
+            background: linear-gradient(90deg, #c00 0%, #c00 33%, #3b9e3b 33%, #3b9e3b 66%, #fff 66%, #fff 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, #0b2b5c, #c00, #0b2b5c);
+            background-size: 200% 200%;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            animation: gradient 10s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #1a1a2e;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fdbb4d;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c00;
+            display: inline-block;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .car-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .car-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover .car-img img {
+            transform: scale(1.05);
+        }
+
+        .car-info {
+            padding: 20px;
+        }
+
+        .car-info h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .car-info .price {
+            color: #c00;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .car-info .price small {
+            font-size: 0.5em;
+            font-weight: normal;
+        }
+
+        .car-info .specs {
+            color: #666;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #c00;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #9a0000;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .advantage-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .order-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .contacts-info {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contacts-info p {
+            margin: 10px 0;
+        }
+
+        .contacts-info a {
+            color: #fdbb4d;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            nav ul { flex-direction: column; text-align: center; gap: 15px; }
+            h2 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flag-belt"></div>
+
+    <header>
+        <h1>🚗 AutoRent.by</h1>
+        <p>Аренда автомобилей в Беларуси — надежно, быстро, выгодно</p>
+        <p style="font-size: 1.1em; margin-top: 15px;">Минск • Гомель • Брест • Витебск • Гродно • Могилёв</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#cars">Автомобили</a></li>
+            <li><a href="#advantages">Преимущества</a></li>
+            <li><a href="#order">Бронирование</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="cars">
+            <h2>🚘 Наш автопарк</h2>
+            <div class="cars-grid">
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="images/camry.jpg" alt="Toyota Camry">
+                    </div>
+                    <div class="car-info">
+                        <h3>Toyota Camry</h3>
+                        <div class="price">140 BYN <small>/ сутки</small></div>
+                        <div class="specs">2022 • Седан • Кондиционер • Автомат</div>
+                        <button class="btn" onclick="alert('Для бронирования позвоните +375 29 123-45-67')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="images/solaris.jpg" alt="Hyundai Solaris">
+                    </div>
+                    <div class="car-info">
+                        <h3>Hyundai Solaris</h3>
+                        <div class="price">70 BYN <small>/ сутки</small></div>
+                        <div class="specs">2021 • Седан • Экономный • Кондиционер</div>
+                        <button class="btn" onclick="alert('Для бронирования позвоните +375 29 123-45-67')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="images/polo.jpg" alt="Volkswagen Polo">
+                    </div>
+                    <div class="car-info">
+                        <h3>Volkswagen Polo</h3>
+                        <div class="price">130 BYN <small>/ сутки</small></div>
+                        <div class="specs">2025 • Седан • Подогрев сидений • Автомат</div>
+                        <button class="btn" onclick="alert('Для бронирования позвоните +375 29 123-45-67')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="images/qashqai.jpg" alt="Nissan Qashqai">
+                    </div>
+                    <div class="car-info">
+                        <h3>Nissan Qashqai</h3>
+                        <div class="price">160 BYN <small>/ сутки</small></div>
+                        <div class="specs">2022 • Кроссовер • Полный привод • Камера</div>
+                        <button class="btn" onclick="alert('Для бронирования позвоните +375 29 123-45-67')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="images/rio.jpg" alt="Kia Rio">
+                    </div>
+                    <div class="car-info">
+                        <h3>Kia Rio</h3>
+                        <div class="price">75 BYN <small>/ сутки</small></div>
+                        <div class="specs">2022 • Седан • Парктроник • Кондиционер</div>
+                        <button class="btn" onclick="alert('Для бронирования позвоните +375 29 123-45-67')">Забронировать</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-img">
+                        <img src="images/octavia.jpg" alt="Skoda Octavia">
+                    </div>
+                    <div class="car-info">
+                        <h3>Skoda Octavia</h3>
+                        <div class="price">150 BYN <small>/ сутки</small></div>
+                        <div class="specs">2025 • Лифтбек • Большой багажник • Автомат</div>
+                        <button class="btn" onclick="alert('Для бронирования позвоните +375 29 123-45-67')">Забронировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages">
+            <h2>✅ Почему выбирают нас</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="icon">📄</div>
+                    <h3>Официально</h3>
+                    <p>Все документы в порядке, страховка включена</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="icon">💸</div>
+                    <h3>Без залога</h3>
+                    <p>Залог не требуется — только паспорт</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="icon">🕐</div>
+                    <h3>24/7 Поддержка</h3>
+                    <p>Поможем на дороге в любое время</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="icon">🇧🇾</div>
+                    <h3>По всей Беларуси</h3>
+                    <p>Филиалы во всех областных центрах</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="order">
+            <h2>📅 Быстрое бронирование</h2>
+            <div class="order-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" id="name" required placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон (+375)</label>
+                        <input type="tel" id="phone" required placeholder="+375 29 123-45-67">
+                    </div>
+                    <div class="form-group">
+                        <label>Автомобиль</label>
+                        <select id="carSelect">
+                            <option value="Toyota Camry">Toyota Camry (140 BYN/сутки)</option>
+                            <option value="Hyundai Solaris">Hyundai Solaris (70 BYN/сутки)</option>
+                            <option value="Volkswagen Polo">Volkswagen Polo (130 BYN/сутки)</option>
+                            <option value="Nissan Qashqai">Nissan Qashqai (160 BYN/сутки)</option>
+                            <option value="Kia Rio">Kia Rio (75 BYN/сутки)</option>
+                            <option value="Skoda Octavia">Skoda Octavia (150 BYN/сутки)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Дата начала</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Дата окончания</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                    <button type="button" class="btn" style="width: 100%;" onclick="submitBooking()">Отправить заявку</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="contacts">
+            <h2>📞 Контактная информация</h2>
+            <div class="contacts-info">
+                <p>📍 Адрес: г. Гродно, ул. Курчатова, 1а</p>
+                <p>📞 Телефон: <a href="tel:+375291234567">+375 29 123-45-67</a> (МТС)</p>
+                <p>📞 Телефон: <a href="tel:+375331234567">+375 33 123-45-67</a> (A1)</p>
+                <p>✉️ Email: <a href="mailto:info@autorent.by">info@autorent.by</a></p>
+                <p>🕐 График работы: Пн–Вс с 9:00 до 21:00 (без обеда)</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 AutoRent.by — Аренда автомобилей в Беларуси. Спасибо, что выбираете нас! 🇧🇾</p>
+    </footer>
+
+    <script>
+        function submitBooking() {
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let car = document.getElementById('carSelect').value;
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
+
+            if (!name || !phone || !startDate || !endDate) {
+                alert('Пожалуйста, заполните все поля!');
+                return;
+            }
+
+            if (!phone.includes('+375') && phone.length < 12) {
+                alert('Пожалуйста, введите корректный телефон в формате +375 XX XXX-XX-XX');
+                return;
+            }
+
+            let message = `Заявка на бронирование:\nИмя: ${name}\nТелефон: ${phone}\nАвтомобиль: ${car}\nДаты: с ${startDate} по ${endDate}`;
+            alert(message + '\n\nМы свяжемся с вами в течение 15 минут!');
+            
+            document.getElementById('bookingForm').reset();
+        }
+    </script>
+</body>
+</html>
