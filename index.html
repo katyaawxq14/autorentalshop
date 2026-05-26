@@ -370,40 +370,52 @@
         </section>
 
         <section id="order">
-            <h2>📅 Быстрое бронирование</h2>
-            <div class="order-form">
-                <form id="bookingForm">
-                    <div class="form-group">
-                        <label>Ваше имя</label>
-                        <input type="text" id="name" required placeholder="Иван Иванов">
-                    </div>
-                    <div class="form-group">
-                        <label>Телефон (+375)</label>
-                        <input type="tel" id="phone" required placeholder="+375 29 123-45-67">
-                    </div>
-                    <div class="form-group">
-                        <label>Автомобиль</label>
-                        <select id="carSelect">
-                            <option value="Toyota Camry">Toyota Camry (140 BYN/сутки)</option>
-                            <option value="Hyundai Solaris">Hyundai Solaris (70 BYN/сутки)</option>
-                            <option value="Volkswagen Polo">Volkswagen Polo (130 BYN/сутки)</option>
-                            <option value="Nissan Qashqai">Nissan Qashqai (160 BYN/сутки)</option>
-                            <option value="Kia Rio">Kia Rio (75 BYN/сутки)</option>
-                            <option value="Skoda Octavia">Skoda Octavia (150 BYN/сутки)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Дата начала</label>
-                        <input type="date" id="startDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Дата окончания</label>
-                        <input type="date" id="endDate" required>
-                    </div>
-                    <button type="button" class="btn" style="width: 100%;" onclick="submitBooking()">Отправить заявку</button>
-                </form>
+    <h2>📅 Быстрое бронирование</h2>
+    <div class="order-form">
+        <form id="bookingForm">
+            <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="text" id="name" required placeholder="Иван Иванов">
             </div>
-        </section>
+            <div class="form-group">
+                <label>Телефон (+375)</label>
+                <input type="tel" id="phone" required placeholder="+375 29 123-45-67">
+            </div>
+            <div class="form-group">
+                <label>Город</label>
+                <select id="city" required>
+                    <option value="">Выберите город</option>
+                    <option value="Минск">Минск</option>
+                    <option value="Гомель">Гомель</option>
+                    <option value="Брест">Брест</option>
+                    <option value="Витебск">Витебск</option>
+                    <option value="Гродно">Гродно</option>
+                    <option value="Могилёв">Могилёв</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Автомобиль</label>
+                <select id="carSelect">
+                    <option value="Toyota Camry">Toyota Camry (140 BYN/сутки)</option>
+                    <option value="Hyundai Solaris">Hyundai Solaris (70 BYN/сутки)</option>
+                    <option value="Volkswagen Polo">Volkswagen Polo (130 BYN/сутки)</option>
+                    <option value="Nissan Qashqai">Nissan Qashqai (160 BYN/сутки)</option>
+                    <option value="Kia Rio">Kia Rio (75 BYN/сутки)</option>
+                    <option value="Skoda Octavia">Skoda Octavia (150 BYN/сутки)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Дата начала</label>
+                <input type="date" id="startDate" required>
+            </div>
+            <div class="form-group">
+                <label>Дата окончания</label>
+                <input type="date" id="endDate" required>
+            </div>
+            <button type="button" class="btn" style="width: 100%;" onclick="submitBooking()">Отправить заявку</button>
+        </form>
+    </div>
+</section>
 
         <section id="contacts">
             <h2>📞 Контактная информация</h2>
