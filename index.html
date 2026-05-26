@@ -433,29 +433,30 @@
         <p>© 2026 AutoRent.by — Аренда автомобилей в Беларуси. Спасибо, что выбираете нас! 🇧🇾</p>
     </footer>
 
-    <script>
-        function submitBooking() {
-            let name = document.getElementById('name').value;
-            let phone = document.getElementById('phone').value;
-            let car = document.getElementById('carSelect').value;
-            let startDate = document.getElementById('startDate').value;
-            let endDate = document.getElementById('endDate').value;
+ <script>
+    function submitBooking() {
+        let name = document.getElementById('name').value;
+        let phone = document.getElementById('phone').value;
+        let city = document.getElementById('city').value;
+        let car = document.getElementById('carSelect').value;
+        let startDate = document.getElementById('startDate').value;
+        let endDate = document.getElementById('endDate').value;
 
-            if (!name || !phone || !startDate || !endDate) {
-                alert('Пожалуйста, заполните все поля!');
-                return;
-            }
-
-            if (!phone.includes('+375') && phone.length < 12) {
-                alert('Пожалуйста, введите корректный телефон в формате +375 XX XXX-XX-XX');
-                return;
-            }
-
-            let message = `Заявка на бронирование:\nИмя: ${name}\nТелефон: ${phone}\nАвтомобиль: ${car}\nДаты: с ${startDate} по ${endDate}`;
-            alert(message + '\n\nМы свяжемся с вами в течение 15 минут!');
-            
-            document.getElementById('bookingForm').reset();
+        if (!name || !phone || !city || !startDate || !endDate) {
+            alert('Пожалуйста, заполните все поля!');
+            return;
         }
-    </script>
+
+        if (!phone.includes('+375') && phone.length < 12) {
+            alert('Пожалуйста, введите корректный телефон в формате +375 XX XXX-XX-XX');
+            return;
+        }
+
+        let message = `Заявка на бронирование:\nИмя: ${name}\nТелефон: ${phone}\nГород: ${city}\nАвтомобиль: ${car}\nДаты: с ${startDate} по ${endDate}`;
+        alert(message + '\n\nМы свяжемся с вами в течение 15 минут!');
+        
+        document.getElementById('bookingForm').reset();
+    }
+</script>
 </body>
 </html>
