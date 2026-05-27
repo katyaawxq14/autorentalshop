@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRent - Аренда авто в Беларуси</title>
+    <title>AutoRent - Аренда авто в Гродно</title>
     <style>
         * {
             margin: 0;
@@ -257,8 +257,8 @@
 
     <header>
         <h1>🚗 AutoRent.by</h1>
-        <p>Аренда автомобилей в Беларуси — надежно, быстро, выгодно</p>
-        <p style="font-size: 1.1em; margin-top: 15px;">Минск • Гомель • Брест • Витебск • Гродно • Могилёв</p>
+        <p>Аренда автомобилей в Гродно — надежно, быстро, выгодно</p>
+        <p style="font-size: 1.1em; margin-top: 15px;">📍 Работаем только в Гродно</p>
     </header>
 
     <nav>
@@ -362,60 +362,48 @@
                     <p>Поможем на дороге в любое время</p>
                 </div>
                 <div class="advantage-card">
-                    <div class="icon">🇧🇾</div>
-                    <h3>По всей Беларуси</h3>
-                    <p>Филиалы во всех областных центрах</p>
+                    <div class="icon">📍</div>
+                    <h3>Только Гродно</h3>
+                    <p>Автомобили выдаются только в Гродно</p>
                 </div>
             </div>
         </section>
 
-<section id="order">
-    <h2>📅 Быстрое бронирование</h2>
-    <div class="order-form">
-        <form id="bookingForm">
-            <div class="form-group">
-                <label>Ваше имя</label>
-                <input type="text" id="name" required placeholder="Иван Иванов">
+        <section id="order">
+            <h2>📅 Быстрое бронирование</h2>
+            <div class="order-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" id="name" required placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон (+375)</label>
+                        <input type="tel" id="phone" required placeholder="+375 29 123-45-67">
+                    </div>
+                    <div class="form-group">
+                        <label>Автомобиль</label>
+                        <select id="carSelect">
+                            <option value="Toyota Camry">Toyota Camry (140 BYN/сутки)</option>
+                            <option value="Hyundai Solaris">Hyundai Solaris (70 BYN/сутки)</option>
+                            <option value="Volkswagen Polo">Volkswagen Polo (130 BYN/сутки)</option>
+                            <option value="Nissan Qashqai">Nissan Qashqai (160 BYN/сутки)</option>
+                            <option value="Kia Rio">Kia Rio (75 BYN/сутки)</option>
+                            <option value="Skoda Octavia">Skoda Octavia (150 BYN/сутки)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Дата начала</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Дата окончания</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                    <button type="button" class="btn" style="width: 100%;" onclick="submitBooking()">Отправить заявку</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label>Телефон (+375)</label>
-                <input type="tel" id="phone" required placeholder="+375 29 123-45-67">
-            </div>
-            <div class="form-group">
-                <label>Город</label>
-                <select id="city" required>
-                    <option value="">Выберите город</option>
-                    <option value="Минск">Минск</option>
-                    <option value="Гомель">Гомель</option>
-                    <option value="Брест">Брест</option>
-                    <option value="Витебск">Витебск</option>
-                    <option value="Гродно">Гродно</option>
-                    <option value="Могилёв">Могилёв</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Автомобиль</label>
-                <select id="carSelect">
-                    <option value="Toyota Camry">Toyota Camry (140 BYN/сутки)</option>
-                    <option value="Hyundai Solaris">Hyundai Solaris (70 BYN/сутки)</option>
-                    <option value="Volkswagen Polo">Volkswagen Polo (130 BYN/сутки)</option>
-                    <option value="Nissan Qashqai">Nissan Qashqai (160 BYN/сутки)</option>
-                    <option value="Kia Rio">Kia Rio (75 BYN/сутки)</option>
-                    <option value="Skoda Octavia">Skoda Octavia (150 BYN/сутки)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Дата начала</label>
-                <input type="date" id="startDate" required>
-            </div>
-            <div class="form-group">
-                <label>Дата окончания</label>
-                <input type="date" id="endDate" required>
-            </div>
-            <button type="button" class="btn" style="width: 100%;" onclick="submitBooking()">Отправить заявку</button>
-        </form>
-    </div>
-</section>
+        </section>
 
         <section id="contacts">
             <h2>📞 Контактная информация</h2>
@@ -430,33 +418,32 @@
     </div>
 
     <footer>
-        <p>© 2026 AutoRent.by — Аренда автомобилей в Беларуси. Спасибо, что выбираете нас! 🇧🇾</p>
+        <p>© 2026 AutoRent.by — Аренда автомобилей в Гродно. Спасибо, что выбираете нас! 🇧🇾</p>
     </footer>
 
-  <script>
-    function submitBooking() {
-        let name = document.getElementById('name').value;
-        let phone = document.getElementById('phone').value;
-        let city = document.getElementById('city').value;
-        let car = document.getElementById('carSelect').value;
-        let startDate = document.getElementById('startDate').value;
-        let endDate = document.getElementById('endDate').value;
+    <script>
+        function submitBooking() {
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let car = document.getElementById('carSelect').value;
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
 
-        if (!name || !phone || !city || !startDate || !endDate) {
-            alert('Пожалуйста, заполните все поля!');
-            return;
+            if (!name || !phone || !startDate || !endDate) {
+                alert('Пожалуйста, заполните все поля!');
+                return;
+            }
+
+            if (!phone.includes('+375') && phone.length < 12) {
+                alert('Пожалуйста, введите корректный телефон в формате +375 XX XXX-XX-XX');
+                return;
+            }
+
+            let message = `Заявка на бронирование:\nИмя: ${name}\nТелефон: ${phone}\nАвтомобиль: ${car}\nДаты: с ${startDate} по ${endDate}`;
+            alert(message + '\n\nМы свяжемся с вами в течение 15 минут!');
+            
+            document.getElementById('bookingForm').reset();
         }
-
-        if (!phone.includes('+375') && phone.length < 12) {
-            alert('Пожалуйста, введите корректный телефон в формате +375 XX XXX-XX-XX');
-            return;
-        }
-
-        let message = `Заявка на бронирование:\nИмя: ${name}\nТелефон: ${phone}\nГород: ${city}\nАвтомобиль: ${car}\nДаты: с ${startDate} по ${endDate}`;
-        alert(message + '\n\nМы свяжемся с вами в течение 15 минут!');
-        
-        document.getElementById('bookingForm').reset();
-    }
-</script>
+    </script>
 </body>
 </html>
